@@ -1,6 +1,3 @@
-// select movie; time of day; their age
-// display price of movie ticket based on their age, time of day and movie such as first release, matinee and non-first release and senior
-
 // Business Logic
 
 function Ticket(age, time, movieType) {
@@ -25,7 +22,6 @@ Ticket.prototype.ticketPrice = function() {
   };
 
 
-
 // User Interface Logic
 let ticket = new Ticket();
 
@@ -39,6 +35,5 @@ $(document).ready(function() {
     let ticketValues = Object.values(ticket);
     let finalPriceTicket = ticket.ticketPrice(ticketValues);
     $("#result").text("$" + finalPriceTicket);
-  });
-  
+  });  
 });
