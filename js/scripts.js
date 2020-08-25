@@ -35,11 +35,10 @@ $(document).ready(function() {
     const ageInput = parseInt($("#age").val());
     const timeInput = $("#time").val();
     const movieTypeInput = $("#movieType").val();
-    let ticket = new Ticket(42, "matinee", "non-regular");
+    let ticket = new Ticket(ageInput, timeInput, movieTypeInput);
     let ticketValues = Object.values(ticket);
     let finalPriceTicket = ticket.ticketPrice(ticketValues);
-    $("#result").text(finalPriceTicket);
-    console.log(finalPriceTicket);
+    $("#result").text("$" + finalPriceTicket);
   });
   
 });

@@ -12,7 +12,19 @@
   <div class="container">
     <h1>Movie Tickets</h1>
     <form>
-
+      <div class="form-control">
+        <label> Please enter your age:
+        <input type="number" min=0 max=110 id="age">
+        </label>
+      </div>
+      <select class="form-control" id="time">
+        <option value="matinee">10:00AM</option>
+        <option value="late-show">6:00PM</option>
+      </select>
+      <select class="form-control" id="movieType">
+        <option value="regular">New Show</option>
+        <option value="non-regular">Old Show</option>
+      </select>
 
       <button type="submit" class="btn btn-success">Get Your Price</button>
     </form>
