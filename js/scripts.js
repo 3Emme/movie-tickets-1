@@ -8,13 +8,12 @@ function Ticket(age, time, movieType) {
   this.time = time,
   this.movieType = movieType
 }
-// Regular ticket price is $14
 
-let ticketValues = Object.values(Ticket);
-console.log(ticketValues);
+
 
 
 Ticket.prototype.ticketPrice = function() {
+  let ticketValues = Object.values(Ticket);
   let regularPriceTicket = 14;
   
   ticketValues.forEach(function() {
@@ -29,10 +28,14 @@ Ticket.prototype.ticketPrice = function() {
     return regularPriceTicket;
     } else {
       return regularPriceTicket;
-    }
+    } 
   });
+  
 }
 
+
+// User Interface Logic
+let ticket = new Ticket();
 
 $(document).ready(function() {
   $("form").submit(function(event) {
@@ -40,7 +43,14 @@ $(document).ready(function() {
     const ageInput = parseInt($("#age").val());
     const timeInput = $("#time").val();
     const movieTypeInput = $("#movieType").val();
-
+    let ticket = new Ticket(82, "matinee", "non-regular");
+    let ticketValues = Object.values(ticket);
+    console.log(ticketValues);
+    console.log(ticket);
+    
+    let finalPriceTicket = ticket.ticketPrice();
+    $("#result").text(finalPriceTicket);
+    console.log(finalPriceTicket);
   });
   
 });
