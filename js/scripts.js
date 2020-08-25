@@ -6,32 +6,24 @@
 function Ticket(age, time, movieType) {
   this.age = age,
   this.time = time,
-  this.movieType = movieType
+  this.movieType = movieType,
+  this.price = 14
 }
-
-
-
 
 Ticket.prototype.ticketPrice = function() {
-  let ticketValues = Object.values(Ticket);
-  let regularPriceTicket = 14;
   
-  ticketValues.forEach(function() {
-    if (ticketValues[0] >= 60 && ticketValues[1] === "matinee" && ticketValues[2] === "non-regular" ) {
-      regularPriceTicket -= 6;
-      return regularPriceTicket;
-    } else if (ticketValues[0] >= 60 && ticketValues[1] === "matinee" || ticketValues[0] >= 60 && ticketValues[2] === "non-regular" || ticketValues[1] === "matinee" && ticketValues[2] === "non-regular") {
-      regularPriceTicket -= 4;
-      return regularPriceTicket;
-    } else if (ticketValues[0] >= 60 || ticketValues[1] === "matinee" || ticketValues[2] === "non-regular" ) {
-    regularPriceTicket -= 2;
-    return regularPriceTicket;
+    if (this.age >= 60 && this.time === "matinee" && this.movieType === "non-regular") {
+      this.price -= 6;
+    } else if (this.age >= 60 && this.time === "matinee" || this.age >= 60 && this.movieType === "non-regular" || this.time === "matinee" && this.movieType === "non-regular") {
+      this.price -= 4;
+    } else if (this.age >= 60 || this.time === "matinee" || this.movieType === "non-regular" ) {
+      this.price -= 2;
     } else {
-      return regularPriceTicket;
-    } 
-  });
-  
-}
+      this.price = this.price;
+    }
+    return this.price;
+  };
+
 
 
 // User Interface Logic
@@ -43,12 +35,9 @@ $(document).ready(function() {
     const ageInput = parseInt($("#age").val());
     const timeInput = $("#time").val();
     const movieTypeInput = $("#movieType").val();
-    let ticket = new Ticket(82, "matinee", "non-regular");
+    let ticket = new Ticket(42, "matinee", "non-regular");
     let ticketValues = Object.values(ticket);
-    console.log(ticketValues);
-    console.log(ticket);
-    
-    let finalPriceTicket = ticket.ticketPrice();
+    let finalPriceTicket = ticket.ticketPrice(ticketValues);
     $("#result").text(finalPriceTicket);
     console.log(finalPriceTicket);
   });
